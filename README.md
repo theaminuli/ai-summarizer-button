@@ -30,7 +30,7 @@ AI Summarize Button is a powerful WordPress block that allows you to create flex
 
 ### Manual Installation
 
-1. Download the plugin from the [releases page](https://github.com/yourusername/ai-summarize-button/releases)
+1. Download the plugin from the [releases page](https://github.com/theaminuli/ai-summarize-button/releases)
 2. Upload the `ai-summarize-button` folder to `/wp-content/plugins/`
 3. Activate the plugin through the Plugins menu in WordPress
 
@@ -38,7 +38,7 @@ AI Summarize Button is a powerful WordPress block that allows you to create flex
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ai-summarize-button.git
+git clone https://github.com/theaminuli/ai-summarize-button.git
 
 # Navigate to the plugin directory
 cd ai-summarize-button
@@ -126,7 +126,7 @@ This plugin is licensed under the GPL-2.0-or-later license. See the [LICENSE](LI
 ## Support
 
 - [WordPress.org Support Forum](https://wordpress.org/support/plugin/ai-summarize-button/)
-- [GitHub Issues](https://github.com/yourusername/ai-summarize-button/issues)
+- [GitHub Issues](https://github.com/theaminuli/ai-summarize-button/issues)
 
 ## Credits
 
@@ -134,7 +134,8 @@ Built with [@wordpress/scripts](https://www.npmjs.com/package/@wordpress/scripts
 
 ## Changelog
 
-### 0.1.0
+### 0.1.0 - 2024-06-15
+#### Added
 - Initial release
 - Horizontal and vertical button layouts
 - Full support for WordPress core button blocks

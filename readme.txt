@@ -82,7 +82,9 @@ Yes, the block is designed to work as a container for core/button blocks, ensuri
 
 == Changelog ==
 
-= 0.1.0 =
+### 0.1.0 - 2024-06-15
+#### Added
+
 * Initial release
 * Horizontal and vertical button layouts
 * Full support for WordPress core button blocks

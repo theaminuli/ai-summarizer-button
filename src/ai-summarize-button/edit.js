@@ -64,7 +64,18 @@ function ButtonsEdit( { attributes, className } ) {
 		defaultBlock: DEFAULT_BLOCK,
 		// This check should be handled by the `Inserter` internally to be consistent across all blocks that use it.
 		directInsert: ! hasButtonVariations,
-		template: [ [ 'core/button' ] ],
+		template: [
+			[
+				'core/button', {
+					text: 'Summarize with AI',
+				},
+			],
+			[
+				'core/button', {
+					text: 'Get Summary',
+				}
+			]
+		],
 		templateInsertUpdatesSelection: true,
 		orientation: layout?.orientation ?? 'horizontal',
 	} );
