@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       AI Summarizer Button
  * Description:       Add AI-powered summarizer buttons to your WordPress site. Create customizable button groups with flexible layouts and styling options.
- * Version:           0.2.0
+ * Version:           0.3.0
  * Requires at least: 6.1
  * Requires PHP:      7.4
  * Author:            theaminul

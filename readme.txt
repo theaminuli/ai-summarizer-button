@@ -4,7 +4,7 @@ Tags:              button, ai, summarize, summary, ai-summarizer-button
 Requires at least: 6.1
 Tested up to:      6.8
 Requires PHP:      7.4
-Stable tag:        0.2.0
+Stable tag:        0.3.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,7 +54,7 @@ AI Summarizer Button is a powerful WordPress block that allows you to create cus
 
 = How do I add this block to my page? =
 
-In the block editor, click the "+" button to add a new block, search for "AI Summarizer Button" or find it under the Design category. The block will be inserted with a default button that you can customize.
+In the block editor, click the "+" button to add a new block, search for "Summarize Button" or find it under the Design category. The block will be inserted with a default button that you can customize.
 
 = Can I customize the button styles? =
 
@@ -62,7 +62,7 @@ Yes! The block supports all WordPress core button styling options including colo
 
 = How do I create vertical button layouts? =
 
-Select the AI Summarizer Button block and use the layout options in the block settings sidebar to change the orientation from horizontal to vertical.
+Select the Summarize Button block and use the layout options in the block settings sidebar to change the orientation from horizontal to vertical.
 
 = Does it work with any WordPress theme? =
 
@@ -83,7 +83,7 @@ Yes, the block is designed to work as a container for core/button blocks, ensuri
 == Changelog ==
 
 ### 0.2.0 - 2025-01-09
-#### Changed
+#### Fixed
 
 * Renamed plugin to AI Summarizer Button for clarity and WordPress.org compliance
 * Updated text domain to ai-summarizer-button
@@ -101,7 +101,7 @@ Yes, the block is designed to work as a container for core/button blocks, ensuri
 
 == Usage ==
 
-1. Add the AI Summarizer Button block to your page or post
+1. Add the Summarize Button block to your page or post
 2. Click the "+" button inside the block to add individual buttons
 3. Customize each button's text, link, and styling
 4. Use the block toolbar to adjust layout (horizontal/vertical)
