@@ -24,7 +24,7 @@ AI Summarizer Button is a powerful WordPress block that allows you to create fle
 ### From WordPress.org
 
 1. Go to **Plugins > Add New** in your WordPress admin
-2. Search for "AI Summarize Button"
+2. Search for "AI Summarizer Button"
 3. Click **Install Now** and then **Activate**
 4. The block will appear in the Design category in the block editor
 
