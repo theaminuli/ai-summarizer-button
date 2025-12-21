@@ -21,9 +21,9 @@ This document provides comprehensive instructions for AI agents, GitHub Copilot,
 ```php
 <?php
 if ( true === $is_active ) {
-	foreach ( $items as $item ) {
-		echo esc_html( $item['name'] );
-	}
+  foreach ( $items as $item ) {
+    echo esc_html( $item['name'] );
+  }
 }
 ```
 
@@ -40,17 +40,33 @@ if ( true === $is_active ) {
 
 **Example:**
 ```javascript
+// jQuery example
 ( function( $ ) {
-	'use strict';
-	
-	const handleClick = function( event ) {
-		event.preventDefault();
-		const $target = $( event.target );
-		// Logic here
-	};
-	
-	$( document ).ready( handleClick );
+  'use strict';
+  
+  const handleClick = function( event ) {
+    event.preventDefault();
+    const $target = $( event.target );
+    // Logic here
+  };
+  
+  $( document ).ready( handleClick );
 } )( jQuery );
+
+// JavaScript ES6+ example
+const initializeApp = () => {
+  const elements = document.querySelectorAll( '.my-element' );
+  
+  elements.forEach( ( element ) => {
+    element.addEventListener( 'click', ( event ) => {
+      event.preventDefault();
+      const { dataset } = event.currentTarget;
+      console.log( dataset.value );
+    } );
+  } );
+};
+
+document.addEventListener( 'DOMContentLoaded', initializeApp );
 ```
 
 ### 1.3 CSS Coding Standards
@@ -66,10 +82,10 @@ if ( true === $is_active ) {
 **Example:**
 ```css
 .wp-block-custom {
-	display: flex;
-	align-items: center;
-	padding: 1rem;
-	background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
 }
 ```
 
@@ -120,9 +136,9 @@ When outputting data, always escape:
 **Example:**
 ```php
 <div class="<?php echo esc_attr( $class_name ); ?>">
-	<a href="<?php echo esc_url( $link ); ?>">
-		<?php echo esc_html( $title ); ?>
-	</a>
+  <a href="<?php echo esc_url( $link ); ?>">
+    <?php echo esc_html( $title ); ?>
+  </a>
 </div>
 ```
 
@@ -137,18 +153,18 @@ wp_nonce_field( 'my_action_name', 'my_nonce_field' );
 **Verifying nonces:**
 ```php
 if ( ! isset( $_POST['my_nonce_field'] ) || ! wp_verify_nonce( $_POST['my_nonce_field'], 'my_action_name' ) ) {
-	wp_die( 'Security check failed' );
+  wp_die( 'Security check failed' );
 }
 ```
 
 **For AJAX:**
 ```javascript
 $.ajax({
-	url: ajaxurl,
-	data: {
-		action: 'my_ajax_action',
-		nonce: myPlugin.nonce,
-	}
+  url: ajaxurl,
+  data: {
+    action: 'my_ajax_action',
+    nonce: myPlugin.nonce,
+  }
 });
 ```
 
@@ -161,7 +177,7 @@ Always verify user permissions before executing privileged actions:
 
 ```php
 if ( ! current_user_can( 'edit_posts' ) ) {
-	wp_die( 'Unauthorized access' );
+  wp_die( 'Unauthorized access' );
 }
 ```
 
@@ -180,11 +196,11 @@ Common capabilities:
 global $wpdb;
 
 $results = $wpdb->get_results(
-	$wpdb->prepare(
-		"SELECT * FROM {$wpdb->prefix}table WHERE user_id = %d AND status = %s",
-		$user_id,
-		$status
-	)
+  $wpdb->prepare(
+    "SELECT * FROM {$wpdb->prefix}table WHERE user_id = %d AND status = %s",
+    $user_id,
+    $status
+  )
 );
 ```
 
@@ -193,7 +209,7 @@ $results = $wpdb->get_results(
 - Use `ABSPATH` checks in all PHP files:
   ```php
   if ( ! defined( 'ABSPATH' ) ) {
-  	exit; // Exit if accessed directly
+  exit; // Exit if accessed directly
   }
   ```
 - Validate file uploads and check MIME types
@@ -219,10 +235,10 @@ $results = $wpdb->get_results(
 **Example:**
 ```php
 <button 
-	type="button" 
-	aria-label="<?php esc_attr_e( 'Close dialog', 'text-domain' ); ?>"
-	aria-expanded="false">
-	<span aria-hidden="true">×</span>
+  type="button" 
+  aria-label="<?php esc_attr_e( 'Close dialog', 'text-domain' ); ?>"
+  aria-expanded="false">
+  <span aria-hidden="true">×</span>
 </button>
 ```
 
@@ -249,18 +265,18 @@ $results = $wpdb->get_results(
 **Example:**
 ```php
 <label for="user-email">
-	<?php esc_html_e( 'Email Address', 'text-domain' ); ?>
-	<span class="required" aria-label="required">*</span>
+  <?php esc_html_e( 'Email Address', 'text-domain' ); ?>
+  <span class="required" aria-label="required">*</span>
 </label>
 <input 
-	type="email" 
-	id="user-email" 
-	name="user_email" 
-	required 
-	aria-required="true"
-	aria-describedby="email-description" />
+  type="email" 
+  id="user-email" 
+  name="user_email" 
+  required 
+  aria-required="true"
+  aria-describedby="email-description" />
 <p id="email-description" class="description">
-	<?php esc_html_e( 'We will never share your email.', 'text-domain' ); ?>
+  <?php esc_html_e( 'We will never share your email.', 'text-domain' ); ?>
 </p>
 ```
 
@@ -271,10 +287,494 @@ $results = $wpdb->get_results(
 - Don't use images of text when HTML text is possible
 
 ---
+## 4.A React based WordPress Plugin Development Guidelines
 
-## 4. WordPress Block Development (Gutenberg)
+### 4.A.1 WordPress React Ecosystem
 
-### 4.1 Block Registration
+WordPress uses React extensively in the block editor (Gutenberg) and modern admin interfaces. Follow these guidelines when building React-based WordPress plugins.
+
+#### Core WordPress React Packages
+
+Use WordPress-provided React packages instead of npm React:
+
+```javascript
+// Good: Use WordPress packages
+import { createElement, useState, useEffect } from '@wordpress/element';
+import { Button, TextControl, PanelBody } from '@wordpress/components';
+import { useSelect, useDispatch } from '@wordpress/data';
+
+// Avoid: Direct React imports (unless necessary for specific features)
+// import React, { useState, useEffect } from 'react';
+```
+
+**Key WordPress Packages:**
+- `@wordpress/element` - React wrapper and hooks
+- `@wordpress/components` - UI component library
+- `@wordpress/data` - State management (Redux-based)
+- `@wordpress/api-fetch` - WordPress REST API client
+- `@wordpress/i18n` - Internationalization
+- `@wordpress/hooks` - Filter and action system
+- `@wordpress/compose` - Higher-order components and hooks
+
+### 4.A.2 Component Structure and Best Practices
+
+#### Functional Components with Hooks
+
+Always use functional components with hooks (React 16.8+):
+
+```javascript
+import { useState, useEffect } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+
+/**
+ * UserProfile component displays user information.
+ *
+ * @param {Object} props Component props
+ * @param {number} props.userId User ID to display
+ * @return {JSX.Element} Rendered component
+ */
+function UserProfile( { userId } ) {
+  const [ user, setUser ] = useState( null );
+  const [ loading, setLoading ] = useState( true );
+
+  useEffect( () => {
+    // Fetch user data
+    fetchUser( userId ).then( ( userData ) => {
+      setUser( userData );
+      setLoading( false );
+    } );
+  }, [ userId ] );
+
+  if ( loading ) {
+    return <div>{ __( 'Loading...', 'text-domain' ) }</div>;
+  }
+
+  return (
+    <div className="user-profile">
+      <h2>{ user.name }</h2>
+      <p>{ user.email }</p>
+    </div>
+  );
+}
+
+export default UserProfile;
+```
+
+#### Component Organization
+
+Follow react.dev best practices for component structure:
+
+**Single Responsibility Principle:**
+```javascript
+// Bad: Component doing too much
+function UserDashboard() {
+  // User data fetching
+  // Settings management
+  // Notifications
+  // Analytics
+  // ...hundreds of lines
+}
+
+// Good: Split into focused components
+function UserDashboard() {
+  return (
+    <>
+      <UserProfile />
+      <UserSettings />
+      <UserNotifications />
+      <UserAnalytics />
+    </>
+  );
+}
+```
+
+**Props Destructuring:**
+```javascript
+// Good: Destructure props for clarity
+function PostTitle( { title, level = 2, className } ) {
+  const Heading = `h${ level }`;
+  return <Heading className={ className }>{ title }</Heading>;
+}
+
+// Avoid: Using props object directly
+function PostTitle( props ) {
+  return <h2>{ props.title }</h2>;
+}
+```
+
+### 4.A.3 State Management
+
+#### Local State with useState
+
+Use `useState` for component-local state:
+
+```javascript
+import { useState } from '@wordpress/element';
+
+function SearchForm() {
+  const [ searchTerm, setSearchTerm ] = useState( '' );
+  const [ results, setResults ] = useState( [] );
+
+  const handleSearch = ( term ) => {
+    setSearchTerm( term );
+    // Perform search
+    searchPosts( term ).then( setResults );
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={ searchTerm }
+        onChange={ ( e ) => handleSearch( e.target.value ) }
+      />
+      <ResultsList results={ results } />
+    </div>
+  );
+}
+```
+
+#### Global State with @wordpress/data
+
+For shared state across components, use WordPress Data API:
+
+**Define a Store:**
+```javascript
+import { createReduxStore, register } from '@wordpress/data';
+
+const DEFAULT_STATE = {
+  settings: {},
+  loading: false,
+  error: null,
+};
+
+const actions = {
+  setSettings( settings ) {
+    return {
+      type: 'SET_SETTINGS',
+      settings,
+    };
+  },
+  setLoading( loading ) {
+    return {
+      type: 'SET_LOADING',
+      loading,
+    };
+  },
+};
+
+const selectors = {
+  getSettings( state ) {
+    return state.settings;
+  },
+  isLoading( state ) {
+    return state.loading;
+  },
+};
+
+const reducer = ( state = DEFAULT_STATE, action ) => {
+  switch ( action.type ) {
+    case 'SET_SETTINGS':
+      return {
+        ...state,
+        settings: action.settings,
+      };
+    case 'SET_LOADING':
+      return {
+        ...state,
+        loading: action.loading,
+      };
+    default:
+      return state;
+  }
+};
+
+const store = createReduxStore( 'my-plugin/settings', {
+  reducer,
+  actions,
+  selectors,
+} );
+
+register( store );
+```
+
+**Use the Store:**
+```javascript
+import { useSelect, useDispatch } from '@wordpress/data';
+
+function SettingsPanel() {
+  const settings = useSelect( ( select ) =>
+    select( 'my-plugin/settings' ).getSettings()
+  );
+
+  const { setSettings } = useDispatch( 'my-plugin/settings' );
+
+  const updateSetting = ( key, value ) => {
+    setSettings( {
+      ...settings,
+      [ key ]: value,
+    } );
+  };
+
+  return (
+    <div>
+      <TextControl
+        label="Site Title"
+        value={ settings.siteTitle }
+        onChange={ ( value ) => updateSetting( 'siteTitle', value ) }
+      />
+    </div>
+  );
+}
+```
+
+### 4.A.4 React Hooks Best Practices
+
+#### Custom Hooks for Reusable Logic
+
+Create custom hooks for shared functionality:
+
+```javascript
+import { useState, useEffect } from '@wordpress/element';
+import apiFetch from '@wordpress/api-fetch';
+
+/**
+ * Custom hook to fetch and manage post data.
+ *
+ * @param {number} postId Post ID to fetch
+ * @return {Object} Hook result with post data and loading state
+ */
+function usePost( postId ) {
+  const [ post, setPost ] = useState( null );
+  const [ loading, setLoading ] = useState( true );
+  const [ error, setError ] = useState( null );
+
+  useEffect( () => {
+    if ( ! postId ) {
+      return;
+    }
+
+    setLoading( true );
+    apiFetch( { path: `/wp/v2/posts/${ postId }` } )
+      .then( ( data ) => {
+        setPost( data );
+        setLoading( false );
+      } )
+      .catch( ( err ) => {
+        setError( err );
+        setLoading( false );
+      } );
+  }, [ postId ] );
+
+  return { post, loading, error };
+}
+
+// Usage
+function PostEditor( { postId } ) {
+  const { post, loading, error } = usePost( postId );
+
+  if ( loading ) {
+    return <Spinner />;
+  }
+
+  if ( error ) {
+    return <Notice status="error">{ error.message }</Notice>;
+  }
+
+  return <PostForm post={ post } />;
+}
+```
+
+#### useEffect Dependencies
+
+Always specify correct dependencies:
+
+```javascript
+// Good: Correct dependencies
+useEffect( () => {
+  fetchData( userId, postType );
+}, [ userId, postType ] );
+
+// Bad: Missing dependencies (ESLint will warn)
+useEffect( () => {
+  fetchData( userId, postType );
+}, [] );
+
+// Good: Empty array for mount-only effects
+useEffect( () => {
+  // Only runs once on mount
+  initializePlugin();
+}, [] );
+```
+
+#### Cleanup in useEffect
+
+Always cleanup side effects:
+
+```javascript
+useEffect( () => {
+  const subscription = subscribeToData( ( data ) => {
+    setData( data );
+  } );
+
+  // Cleanup function
+  return () => {
+    subscription.unsubscribe();
+  };
+}, [] );
+```
+
+### 4.A.5 WordPress Components Library
+
+Use `@wordpress/components` for consistent UI
+
+### 4.A.6 WordPress REST API Integration
+
+Use `@wordpress/api-fetch` for API requests:
+
+```javascript
+import apiFetch from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
+
+// GET request
+async function fetchPosts( params = {} ) {
+  const path = addQueryArgs( '/wp/v2/posts', {
+    per_page: 10,
+    ...params,
+  } );
+
+  try {
+    const posts = await apiFetch( { path } );
+    return posts;
+  } catch ( error ) {
+    console.error( 'Error fetching posts:', error );
+    throw error;
+  }
+}
+
+// POST request
+async function createPost( postData ) {
+  try {
+    const post = await apiFetch( {
+      path: '/wp/v2/posts',
+      method: 'POST',
+      data: postData,
+    } );
+    return post;
+  } catch ( error ) {
+    console.error( 'Error creating post:', error );
+    throw error;
+  }
+}
+
+// Custom endpoint
+async function getPluginData() {
+  try {
+    const data = await apiFetch( {
+      path: '/my-plugin/v1/data',
+      method: 'GET',
+    } );
+    return data;
+  } catch ( error ) {
+    console.error( 'Error fetching plugin data:', error );
+    throw error;
+  }
+}
+```
+
+### 4.A.7 Performance Optimization
+
+#### React.memo for Component Memoization
+
+Prevent unnecessary re-renders:
+
+```javascript
+import { memo } from '@wordpress/element';
+
+// Expensive component that should only re-render when props change
+const PostList = memo( function PostList( { posts, onPostClick } ) {
+  return (
+    <ul>
+      { posts.map( ( post ) => (
+        <li key={ post.id } onClick={ () => onPostClick( post ) }>
+          { post.title }
+        </li>
+      ) ) }
+    </ul>
+  );
+} );
+
+// Custom comparison function
+const PostListOptimized = memo(
+  PostList,
+  ( prevProps, nextProps ) => {
+    // Only re-render if post IDs changed
+    return prevProps.posts.map( ( p ) => p.id ).join() ===
+      nextProps.posts.map( ( p ) => p.id ).join();
+  }
+);
+```
+
+#### useMemo and useCallback (Optional)
+
+Optimize expensive calculations and callbacks:
+
+```javascript
+import { useMemo, useCallback } from '@wordpress/element';
+
+function PostFilter( { posts, filters } ) {
+  // Memoize expensive filtering operation
+  const filteredPosts = useMemo( () => {
+    return posts.filter( ( post ) => {
+      return Object.entries( filters ).every( ( [ key, value ] ) => {
+        return post[ key ] === value;
+      } );
+    } );
+  }, [ posts, filters ] );
+
+  // Memoize callback to prevent child re-renders
+  const handlePostClick = useCallback( ( postId ) => {
+    console.log( 'Clicked post:', postId );
+    // Handle click
+  }, [] );
+
+  return (
+    <PostList posts={ filteredPosts } onPostClick={ handlePostClick } />
+  );
+}
+```
+
+#### Lazy Loading Components (Optional)
+
+Split large components for better performance:
+
+```javascript
+import { lazy, Suspense } from '@wordpress/element';
+import { Spinner } from '@wordpress/components';
+
+// Lazy load heavy components
+const AdvancedEditor = lazy( () => import( './components/AdvancedEditor' ) );
+const AnalyticsDashboard = lazy( () => import( './components/Analytics' ) );
+
+function PluginAdmin() {
+  const [ activeTab, setActiveTab ] = useState( 'editor' );
+
+  return (
+    <div>
+      <TabNav activeTab={ activeTab } onChange={ setActiveTab } />
+      <Suspense fallback={ <Spinner /> }>
+        { activeTab === 'editor' && <AdvancedEditor /> }
+        { activeTab === 'analytics' && <AnalyticsDashboard /> }
+      </Suspense>
+    </div>
+  );
+}
+```
+
+---
+## 4.B WordPress Block Development (Gutenberg)
+
+### 4.B.1 Block Registration
 - Use `register_block_type()` with `block.json` manifest
 - Define all block attributes in `block.json`
 - Use proper category: `text`, `media`, `design`, `widgets`, `theme`, `embed`
@@ -283,33 +783,33 @@ $results = $wpdb->get_results(
 **Example block.json:**
 ```json
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "plugin-name/block-name",
-	"title": "Block Title",
-	"category": "widgets",
-	"icon": "admin-site",
-	"description": "Block description",
-	"supports": {
-		"spacing": {
-			"padding": true,
-			"margin": true
-		}
-	},
-	"textdomain": "plugin-name",
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "plugin-name/block-name",
+  "title": "Block Title",
+  "category": "widgets",
+  "icon": "admin-site",
+  "description": "Block description",
+  "supports": {
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "textdomain": "plugin-name",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
 }
 ```
 
-### 4.2 Block Attributes
+### 4.B.2 Block Attributes
 - Use proper attribute types: `string`, `number`, `boolean`, `array`, `object`
 - Define default values
 - Use `source` and `selector` for dynamic blocks
 - Keep attribute names in camelCase
 
-### 4.3 Block Supports
+### 4.B.3 Block Supports
 Enable appropriate block supports:
 - `align` - alignment options
 - `anchor` - custom HTML anchor
@@ -317,7 +817,7 @@ Enable appropriate block supports:
 - `spacing` - padding and margin
 - `typography` - font settings
 
-### 4.4 React Best Practices
+### 4.B.4 React Best Practices
 - Use functional components with hooks
 - Destructure props: `const { attributes, setAttributes } = props;`
 - Use `useBlockProps()` for wrapper element
@@ -325,14 +825,13 @@ Enable appropriate block supports:
 - Use `BlockControls` for toolbar controls
 - Import components from `@wordpress/components`
 
-### 4.5 Following react.dev Best Practices
+### 4.B.5 Following react.dev Best Practices
 - Keep components small and focused
 - Use hooks for state and side effects
 - Avoid unnecessary re-renders with `React.memo`
 - Use context for global state management
 - custom hooks for reusable logic
 - Specifically stong following react.dev guidelines on component structure and state management
-
 ---
 
 ## 5. Internationalization (i18n)
@@ -419,22 +918,22 @@ $value = apply_filters( 'my_plugin_custom_filter', $value, $context );
 **Example:**
 ```php
 function my_plugin_enqueue_scripts() {
-	if ( is_singular( 'post' ) ) {
-		wp_enqueue_style(
-			'my-plugin-style',
-			plugins_url( 'css/style.css', __FILE__ ),
-			array(),
-			'1.0.0'
-		);
-		
-		wp_enqueue_script(
-			'my-plugin-script',
-			plugins_url( 'js/script.js', __FILE__ ),
-			array( 'jquery' ),
-			'1.0.0',
-			true
-		);
-	}
+  if ( is_singular( 'post' ) ) {
+    wp_enqueue_style(
+      'my-plugin-style',
+      plugins_url( 'css/style.css', __FILE__ ),
+      array(),
+      '1.0.0'
+    );
+    
+    wp_enqueue_script(
+      'my-plugin-script',
+      plugins_url( 'js/script.js', __FILE__ ),
+      array( 'jquery' ),
+      '1.0.0',
+      true
+    );
+  }
 }
 add_action( 'wp_enqueue_scripts', 'my_plugin_enqueue_scripts' );
 ```
@@ -451,8 +950,8 @@ add_action( 'wp_enqueue_scripts', 'my_plugin_enqueue_scripts' );
 $cached_data = get_transient( 'my_plugin_data' );
 
 if ( false === $cached_data ) {
-	$cached_data = expensive_operation();
-	set_transient( 'my_plugin_data', $cached_data, HOUR_IN_SECONDS );
+  $cached_data = expensive_operation();
+  set_transient( 'my_plugin_data', $cached_data, HOUR_IN_SECONDS );
 }
 ```
 
@@ -492,7 +991,7 @@ Use PHPDoc format for all functions and classes:
  * @return bool True on success, false on failure.
  */
 function my_function( $param1, $param2 ) {
-	// Function code
+  // Function code
 }
 ```
 
@@ -507,7 +1006,7 @@ All plugin files should include headers:
 
 ```php
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+  exit; // Exit if accessed directly
 }
 ```
 
@@ -527,7 +1026,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 - Add to `.eslintrc.json`:
   ```json
   {
-    "extends": "plugin:@wordpress/eslint-plugin/recommended"
+  "extends": "plugin:@wordpress/eslint-plugin/recommended"
   }
   ```
 
@@ -608,6 +1107,26 @@ Test in multiple browsers:
 - [ ] Plugin header is complete
 - [ ] README.txt follows WordPress standards
 - [ ] Custom hooks are documented
+
+### 11.8 React Best Practices Checklist
+
+- [ ] Use functional components with hooks exclusively
+- [ ] Destructure props for readability
+- [ ] Use WordPress packages (@wordpress/element, @wordpress/components)
+- [ ] Implement proper prop types or TypeScript interfaces
+- [ ] Add JSDoc comments for all components
+- [ ] Use custom hooks for reusable logic
+- [ ] Memoize expensive operations with useMemo/useCallback
+- [ ] Implement error boundaries for critical sections
+- [ ] Follow react.dev component composition patterns
+- [ ] Keep components small and focused (Single Responsibility)
+- [ ] Use WordPress Data API for global state
+- [ ] Properly cleanup effects with return functions
+- [ ] Add loading and error states for async operations
+- [ ] Use WordPress i18n functions for all user-facing strings
+- [ ] Test components with @testing-library/react
+- [ ] Optimize with React.memo when appropriate
+- [ ] Follow accessibility guidelines (ARIA, semantic HTML)
 
 ---
 
@@ -704,8 +1223,6 @@ When you cannot complete a task safely:
 ### Community Resources
 - [WordPress Stack Exchange](https://wordpress.stackexchange.com/)
 - [Make WordPress](https://make.wordpress.org/)
-- [WordPress Slack](https://make.wordpress.org/chat/)
-
 ---
 
 ## 14. Version History
