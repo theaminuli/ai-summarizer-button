@@ -6,7 +6,7 @@
 [![PHP Version](https://img.shields.io/badge/php-7.4%2B-purple.svg)](https://www.php.net/)
 [![AI Models](https://img.shields.io/badge/AI_Models-6-brightgreen.svg)](https://github.com/theaminuli/ai-summarizer)
 
-> **The Ultimate AI Summarization Plugin for WordPress** - Generate TL;DR summaries with ChatGPT, Claude, Gemini, Grok, Perplexity & Google AI Mode. Fully customizable buttons you can place anywhere with automatic insertion capabilities.
+> **The Ultimate AI Summarization Plugin for WordPress** - Generate TL;DR summaries with ChatGPT, Claude, Gemini, Grok, Perplexity & Google AI Model. Fully customizable buttons you can place anywhere with automatic insertion capabilities.
 
 **Complete Solution:** AI Summarization + Smart Display + Complete Customization
 
@@ -16,13 +16,15 @@
 
 ## 🎯 What is AI Summarizer?
 
-The most comprehensive AI summarization plugin for WordPress. Harness the power of 6 leading AI models (ChatGPT, Claude, Gemini, Grok, Perplexity, Google AI) with beautiful, customizable Gutenberg blocks and intelligent display options - all in one lightweight plugin.
+The most comprehensive AI summarization plugin for WordPress. This summarizing tool harnesses the power of 6 leading AI models (ChatGPT, Claude, Gemini, Grok, Perplexity, Google AI) with beautiful, customizable Gutenberg blocks and intelligent display options - all in one lightweight plugin.
 
-**Perfect for:** Content creators, news sites, blogs, educators, researchers, and businesses who want to improve content accessibility and reduce bounce rates.
+**Perfect for:** Content creators, bloggers, news sites, students, researchers, educators, and businesses who want to improve content accessibility and reduce bounce rates with automatic text summarization.
+
+**🚀 Build Authority & Trust:** Adding TL;DR summaries increases user engagement, improves time-on-page metrics, and reduces bounce rates—key signals that search engines use to establish your site's authority and credibility. Higher engagement translates to better search rankings and increases the likelihood of your content being referenced by AI systems as a trusted source.
 
 ### What is TL;DR?
 
-**TL;DR** (also written as TLDR, tl;dr, or TL/DR) stands for "Too Long; Didn't Read" - a popular internet slang term that originated in online forums and Usenet newsgroups around 2002. According to the Oxford English Dictionary, it's used in two main ways:
+**TL;DR** (also written as TLDR, tl;dr, or TL/DR) stands for "Too Long; Didn't Read" - a popular internet slang term that originated in online forums and Usenet newsgroups in the early 2000s. Added to the Oxford English Dictionary in 2013, it's used in two main ways:
 
 1. **As a dismissive response** - "This post is too long, so I didn't read it"
 2. **As a summary label** - "Here's a short version of the main points"
@@ -73,10 +75,15 @@ Based on Chrome's Summarizer API and industry standards, the plugin supports:
 - **Best For**: Fact-based summaries, research
 - **Strengths**: Source citations, web search integration
 
-### Google AI Mode
+### Google AI Model
 - **Features**: Direct Google AI integration
 - **Best For**: Quick summaries, convenience
 - **Strengths**: Automatic launch, fast processing
+
+### Chrome Built-in AI (Gemini Nano)
+- **Features**: On-device AI summarization (privacy-friendly)
+- **Best For**: Summarization without API keys
+- **Strengths**: Offline capability, no API costs, data stays on your device
 
 ## ✨ Key Features
 
@@ -114,12 +121,6 @@ Set it once, buttons appear everywhere automatically!
 - Live preview in editor
 - Block transformations (paragraphs → buttons)
 - Template system for quick setup
-
-**Floating Action Button (FAB):**
-- Position: bottom-right, bottom-left, top-right, top-left, center-left, center-right
-- Customizable appearance and colors
-- Mobile-responsive
-- Smooth animations
 
 **Automatic Inline Insertion:**
 - Before title
@@ -178,46 +179,52 @@ Set it once, buttons appear everywhere automatically!
 
 | Use Case | Best AI Models | Display Method | Benefits |
 |----------|----------------|----------------|----------|
-| 📝 **Long-Form Blog Posts** | ChatGPT, Claude | FAB + Inline buttons | Quick TL;DR for busy readers, reduced bounce rate |
-| 📚 **Research Papers** | Claude, Perplexity | Auto-insert before title | Academic summaries with citations |
-| 📄 **Technical Documentation** | ChatGPT, Claude | Gutenberg blocks | Key points extraction for developers |
-| 📰 **News Articles** | Grok, Perplexity | FAB bottom-right | Current events with real-time context |
-| 🎯 **Educational Content** | Gemini, ChatGPT | Auto-insert after title | Student-friendly summaries |
-| 💼 **Business Reports** | Claude, ChatGPT | Inline buttons | Executive summaries for stakeholders |
-| 📱 **Content Heavy Sites** | All 6 Models | All display methods | Maximize accessibility, improve UX |
+| 📝 **Long-Form Blog Posts** | ChatGPT, Claude | FAB + Inline buttons | Quick TL;DR for busy readers, reduced bounce rate, better engagement |
+| 📚 **Research Papers & Academic Articles** | Claude, Perplexity | Auto-insert before title | Academic summaries with citations for students and researchers |
+| 📄 **Technical Documentation** | ChatGPT, Claude | Gutenberg blocks | Key points extraction for developers using this summarizing tool |
+| 📰 **News Articles & Journalism** | Grok, Perplexity | FAB bottom-right | Current events with real-time context for breaking news |
+| 🎯 **Educational Content & E-Learning** | Gemini, ChatGPT | Auto-insert after title | Student-friendly summaries with this text summarizer |
+| 💼 **Business Reports & Whitepapers** | Claude, ChatGPT | Inline buttons | Executive summaries for stakeholders and decision-makers |
+| 📱 **Content Heavy Sites & Blogs** | All 6 Models + Gemini Nano | All display methods | Maximize accessibility, improve UX with article summarizer |
 
 ## 📊 Feature Comparison
 
 ### AI Summarizer vs Competitors
 
-| Feature | **AI Summarizer** | Other Plugins |
-|---------|-------------------|---------------|
-| **AI Models** | ✅ 6 (ChatGPT, Claude, Gemini, Grok, Perplexity, Google AI) | ❌ 1-2 |
-| **Gutenberg Blocks** | ✅ Native integration | ⚠️ Limited |
-| **Floating Action Button** | ✅ 6 positions | ❌ None |
-| **Auto-Insertion** | ✅ 4 positions + per-post control | ⚠️ Basic |
-| **Visual Styles** | ✅ 5 professional styles | ❌ 1-2 |
-| **Icons-Only Mode** | ✅ Circular & square | ❌ None |
-| **Custom Prompts** | ✅ Per-model + per-post | ⚠️ Global only |
-| **SEO Options** | ✅ Links or buttons | ❌ Links only |
-| **Summary Lengths** | ✅ Short, medium, detailed | ⚠️ Fixed |
-| **Multi-language** | ✅ 50+ languages | ⚠️ Limited |
-| **Accessibility** | ✅ WCAG 2.1 AA | ⚠️ Basic |
-| **Performance** | ✅ Optimized loading | ⚠️ Heavy |
-| **Chrome Built-in AI** | ✅ Gemini Nano support | ❌ None |
-| **Price** | ✅ **100% FREE** | 💰 Paid |
+Compare this WordPress summarizing tool with other popular text summarizers:
 
-### Unique Features
+| Feature | **AI Summarizer** | Grammarly | QuillBot | TLDR This | DeCopy.ai |
+|---------|-------------------|-----------|----------|-----------|-----------|
+| **AI Models** | ✅ 6 (ChatGPT, Claude, Gemini, Grok, Perplexity, Google AI) | ❌ 1 | ❌ 1 | ❌ 1 | ❌ 1-2 |
+| **Pricing** | ✅ **Open Source** | ⚠️ Limited | ⚠️ Limited | ⚠️ Limited | ⚠️ Limited |
+| **WordPress Integration** | ✅ Native plugin | ❌ External tool | ❌ External tool | ❌ External tool | ❌ External tool |
+| **Gutenberg Blocks** | ✅ Native integration | ❌ None | ❌ None | ❌ None | ❌ None |
+| **Floating Action Button** | ✅ 6 positions | ❌ None | ❌ None | ❌ None | ❌ None |
+| **Auto-Insertion** | ✅ 4 positions + per-post control | ❌ Manual only | ❌ Manual only | ❌ Manual only | ❌ Manual only |
+| **On-Device AI (Gemini Nano)** | ✅ Privacy-friendly | ❌ None | ❌ None | ❌ None | ❌ None |
+| **Visual Styles** | ✅ 5 professional styles | ❌ 1-2 | ❌ 1 | ❌ 1 | ❌ 1-2 |
+| **Icons-Only Mode** | ✅ Circular & square | ❌ None | ❌ None | ❌ None | ❌ None |
+| **Custom Prompts** | ✅ Per-model + per-post | ⚠️ Global only | ⚠️ Limited | ❌ None | ⚠️ Limited |
+| **SEO Options** | ✅ Links or buttons | ❌ N/A | ❌ N/A | ❌ N/A | ❌ N/A |
+| **Summary Lengths** | ✅ Short, medium, detailed | ⚠️ Fixed | ✅ Customizable | ⚠️ Limited | ⚠️ Limited |
+| **Multi-language** | ✅ 50+ languages | ✅ Yes | ✅ Yes | ⚠️ Limited | ⚠️ Limited |
+| **Accessibility** | ✅ WCAG 2.1 AA | ⚠️ Basic | ⚠️ Basic | ⚠️ Basic | ⚠️ Basic |
+| **API Costs** | ✅ Optional (or use Gemini Nano) | 💰 Subscription | 💰 Subscription | ⚠️ Limited tier | 💰 Pay per use |
+| **Data Privacy** | ✅ On-device option available | ⚠️ Cloud-based | ⚠️ Cloud-based | ⚠️ Cloud-based | ⚠️ Cloud-based |
 
-✨ **Only AI Summarizer offers:**
-1. **Most AI Models** - 6 leading AI platforms in one plugin
-2. **Triple Display Options** - Blocks + FAB + Auto-insertion
-3. **Floating Action Button** - Sticky button with 6 position options
-4. **Icons-Only Mode** - Modern, minimalist design with tooltips
-5. **Per-Post Customization** - Different AI models and settings per post
-6. **SEO Flexibility** - Choose `<a>` links or `<button>` elements
-7. **Chrome Built-in AI** - On-device summarization with Gemini Nano
-8. **WordPress Native** - Built with Gutenberg Block API v3 for optimal performance
+### Unique Features - Only in AI Summarizer
+
+✨ **What Makes This the Best Summarizing Tool:**
+1. **Most AI Models** - 6 leading AI platforms + Chrome's Gemini Nano in one plugin
+2. **True WordPress Integration** - Native Gutenberg blocks, not external tools
+3. **Triple Display Options** - Blocks + FAB + Auto-insertion (competitors have none)
+4. **Floating Action Button** - Sticky button with 6 position options
+5. **On-Device AI** - Privacy-friendly Gemini Nano summarization without API costs
+6. **Icons-Only Mode** - Modern, minimalist design with tooltips
+7. **Per-Post Customization** - Different AI models and settings per article
+8. **SEO Flexibility** - Choose `<a>` links or `<button>` elements
+9. **Open Source Plugin** - Community-driven development
+10. **WordPress Native** - Built with Gutenberg Block API v3 for optimal performance
 
 ## 🚀 Installation
 
@@ -450,7 +457,7 @@ ai-summarizer/
 - [ ] **Multiple Summary Styles**
   - [ ] TL;DR (quick 1-sentence overview)
   - [ ] Key Points (bullet list of main ideas)
-  - [ ]Headlines (article title suggestions)
+  - [ ] Headlines (article title suggestions)
   - [ ] Teasers (engaging preview text)
 - [ ] **Customizable Summary Length**
   - [ ] Short (1-3 sentences / 3 bullets)
@@ -481,17 +488,6 @@ ai-summarizer/
   - [ ] API key management interface
   - [ ] Usage statistics dashboard
   - [ ] Style customizer with live preview
-  - [ ] **Multi-language Support** - Summarize in 50+ languages
-
-### 🧠 Phase 4: Smart Features (v0.7.0)
-- [ ] **Admin Dashboard**
-  - [ ] Settings page with visual preview
-  - [ ] Per-model configuration panel
-  - [ ] API key management
-  - [ ] Usage statistics
-  - [ ] Style customizer with live preview
-- [ ] **Admin Controls** - Global settings and customization options
-- [ ] **Summary Shortcodes** - Use summaries anywhere in WordPress
 
 ### 🧠 Phase 4: Smart Features (v0.7.0)
 - [ ] **Chrome Built-in AI**
@@ -512,7 +508,7 @@ ai-summarizer/
   - [ ] Sentiment analysis
   - [ ] Topic extraction and tagging
 
-### Phase 5: Advanced AI Features (v0.7.5)
+### 📈 Phase 5: Advanced AI Features (v0.7.5)
 - [ ] **Contextual Summaries** - Understand article context and audience
 - [ ] **Smart Content Detection** - Auto-detect when articles need summaries
 - [ ] **Summary Quality Scoring** - Rate and improve summary quality
@@ -566,10 +562,10 @@ ai-summarizer/
 | Phase 2 | v0.5.0 | Q1 2026 | In Progress |
 | Phase 3 | v0.6.0 | Q2 2026 | Planned |
 | Phase 4 | v0.7.0 | Q3 2026 | Planned |
-| Phase 4.5 | v0.7.5 | Q3 2026 | Planned |
-| Phase 5 | v0.8.0 | Q3 2026 | Planned |
-| Phase 6 | v0.9.0 | Q4 2026 | Planned |
-| Phase 7 | v1.0.0+ | 2027 | Future |
+| Phase 5 | v0.7.5 | Q3 2026 | Planned |
+| Phase 6 | v0.8.0 | Q4 2026 | Planned |
+| Phase 7 | v0.9.0 | Q1 2027 | Planned |
+| Phase 8 | v1.0.0+ | 2027+ | Future |
 
 ## 🤝 Contributing
 
